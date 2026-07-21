@@ -31,7 +31,7 @@ function Home() {
       {/* Hero — headline sticks while the image scrolls past */}
       <section className="relative mx-auto max-w-[1400px] px-6 md:px-12">
         <div className="grid grid-cols-12 gap-y-8 md:gap-x-8 md:min-h-[120vh]">
-          <div className="col-span-12 md:col-span-6 md:sticky md:top-32 md:self-start md:h-[calc(100vh-8rem)] flex flex-col md:pt-[18vh]">
+          <div className="col-span-12 md:col-span-6 md:sticky md:top-0 md:self-start flex flex-col md:mt-[18vh]">
             <h1 className="font-display text-[2.5rem] leading-[1.02] md:text-[5.5rem] md:leading-[0.98] tracking-[-0.02em]">
               Made by hand,
               <br />

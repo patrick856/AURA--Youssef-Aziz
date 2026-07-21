@@ -28,18 +28,23 @@ function Home() {
 
   return (
     <PageShell>
-      {/* Hero — text and object share one room */}
+      {/* Hero — headline sticks while the image scrolls past */}
       <section className="relative mx-auto max-w-[1400px] px-6 md:px-12">
-        <div className="relative grid min-h-[85vh] grid-cols-12 items-end gap-y-8">
-          <h1 className="col-span-12 md:col-span-7 font-display text-[2.5rem] leading-[1.02] md:text-[5.5rem] md:leading-[0.98] tracking-[-0.02em]">
-            Made by hand,
-            <br />
-            one small piece
-            <br />
-            at a time.
-          </h1>
+        <div className="grid grid-cols-12 gap-y-8 md:gap-x-8 md:min-h-[120vh]">
+          <div className="col-span-12 md:col-span-6 md:sticky md:top-32 md:self-start md:h-[calc(100vh-8rem)] flex flex-col justify-between">
+            <h1 className="font-display text-[2.5rem] leading-[1.02] md:text-[5.5rem] md:leading-[0.98] tracking-[-0.02em]">
+              Made by hand,
+              <br />
+              one small piece
+              <br />
+              at a time.
+            </h1>
+            <p className="max-w-md text-lg opacity-80 mt-8">
+              That's how a room becomes a home.
+            </p>
+          </div>
 
-          <div className="col-span-12 md:col-span-6 md:col-start-7 md:row-start-1 md:-mb-16 relative">
+          <div className="col-span-12 md:col-span-6 relative">
             <img
               src={heroPiece}
               alt="A handcrafted walnut side table in a sunlit room"
@@ -48,10 +53,6 @@ function Home() {
               className="w-full h-auto object-contain mix-blend-multiply"
             />
           </div>
-
-          <p className="col-span-12 md:col-span-5 md:col-start-1 max-w-md text-lg opacity-80 md:mt-8">
-            That's how a room becomes a home.
-          </p>
         </div>
       </section>
 

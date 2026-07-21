@@ -24,9 +24,9 @@ function cap(s: string) {
 }
 
 function CategoryPage() {
-  const { category } = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const category = data.category as Category;
   const items = byCategory(category);
-  const intro = categoryIntro[category];
 
   return (
     <PageShell>
@@ -37,6 +37,7 @@ function CategoryPage() {
         <h1 className="mt-6 font-display text-4xl md:text-6xl capitalize">{category}</h1>
         <p className="mt-8 max-w-xl text-lg opacity-80">{categoryIntro[category]}</p>
       </section>
+
 
       <section className="mx-auto mt-24 max-w-[1400px] px-6 md:px-12">
         <div className="grid grid-cols-1 gap-x-10 gap-y-24 md:grid-cols-2 lg:grid-cols-3">

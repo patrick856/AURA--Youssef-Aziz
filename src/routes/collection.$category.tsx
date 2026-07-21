@@ -26,6 +26,7 @@ function cap(s: string) {
 function CategoryPage() {
   const { category } = Route.useLoaderData();
   const items = byCategory(category);
+  const intro = categoryIntro[category];
 
   return (
     <PageShell>

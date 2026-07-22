@@ -29,18 +29,18 @@ function Home() {
   return (
     <PageShell>
       {/* Hero — headline sticks while the image scrolls past */}
-      <section className="relative mx-auto max-w-[1400px] px-6 md:px-12">
-        <div className="grid grid-cols-12 gap-y-8 md:gap-x-8">
+      <section className="relative mx-auto max-w-[1400px] px-6 mt-6 md:mt-0 md:px-12">
+        <div className="grid grid-cols-12 gap-y-10 md:gap-x-8 md:gap-y-8">
           <div className="col-span-12 md:col-span-6 md:sticky md:top-28 md:self-start flex flex-col md:mt-[10vh]">
 
-            <h1 className="font-display text-[2.5rem] leading-[1.02] md:text-[5.5rem] md:leading-[0.98] tracking-[-0.02em]">
+            <h1 className="font-display text-[2.35rem] leading-[1.04] sm:text-[2.5rem] md:text-[5.5rem] md:leading-[0.98] tracking-[-0.02em]">
               Made by hand,
               <br />
               one small piece
               <br />
               at a time.
             </h1>
-            <p className="max-w-md text-lg opacity-80 mt-8">
+            <p className="max-w-md text-base sm:text-lg opacity-80 mt-4 md:mt-5">
               That's how a room becomes a home.
             </p>
           </div>
@@ -79,25 +79,28 @@ function Home() {
         </div>
 
         <div className="mt-16 md:hidden">
-          <Link to="/collection" className="text-sm uppercase tracking-[0.22em] link-quiet border-b-0">
+          <Link
+            to="/collection"
+            className="inline-flex items-center justify-center border border-[var(--color-espresso)] bg-[var(--color-espresso)] text-[var(--color-linen)] px-8 py-4 text-xs uppercase tracking-[0.24em] transition-colors hover:bg-transparent hover:text-[var(--color-espresso)] w-full text-center min-h-[48px]"
+          >
             The full collection
           </Link>
         </div>
       </section>
 
       {/* Brand statement */}
-      <section className="mx-auto mt-40 max-w-[1100px] px-6 md:mt-56 md:px-12">
+      <section className="mx-auto mt-32 max-w-[1100px] px-6 md:mt-56 md:px-12">
         <p className="text-xs uppercase tracking-[0.28em] opacity-60">The studio</p>
-        <p className="mt-8 font-display text-2xl leading-[1.35] md:text-4xl md:leading-[1.25]">
+        <p className="mt-6 md:mt-8 font-display text-xl sm:text-2xl leading-[1.35] md:text-4xl md:leading-[1.25]">
           AURA is not a store. It is a room where objects, made slowly by hand,
           settle in. Walnut and brass, stoneware and beeswax. Small runs. No hurry.
         </p>
-        <p className="mt-10 max-w-xl text-base opacity-75">
+        <p className="mt-6 md:mt-10 max-w-xl text-sm md:text-base opacity-75">
           Each piece is one small addition. Present it, live with it, and the room
           begins — quietly — to change.
         </p>
-        <div className="mt-14">
-          <Link to="/collection" className="text-sm uppercase tracking-[0.22em] link-quiet">
+        <div className="mt-10 md:mt-14">
+          <Link to="/collection" className="text-xs md:text-sm uppercase tracking-[0.22em] link-quiet">
             Walk through the collection
           </Link>
         </div>

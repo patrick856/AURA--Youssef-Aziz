@@ -23,7 +23,7 @@ function About() {
     <PageShell>
       <section className="mx-auto max-w-[1200px] px-6 md:px-12">
         <p className="text-xs uppercase tracking-[0.28em] opacity-60">The studio</p>
-        <h1 className="mt-4 font-display text-4xl md:text-6xl max-w-3xl leading-[1.02]">
+        <h1 className="mt-4 font-display text-2xl sm:text-3xl md:text-6xl max-w-3xl leading-[1.05] md:leading-[1.02]">
           A room where objects are made slowly.
         </h1>
       </section>
@@ -33,13 +33,13 @@ function About() {
           <img src={studio} alt="Inside the AURA studio" className="w-full h-auto" loading="lazy" />
         </div>
         <div className="col-span-12 md:col-span-5 md:col-start-8 md:pt-8">
-          <h2 className="font-display text-2xl md:text-3xl">Quality of attention.</h2>
-          <p className="mt-6 text-base opacity-85 leading-relaxed">
+          <h2 className="font-display text-xl md:text-3xl">Quality of attention.</h2>
+          <p className="mt-6 text-sm md:text-base opacity-85 leading-relaxed">
             Each piece begins at a bench. Walnut is jointed by hand. Stoneware is
             thrown, then rested, then fired. Wax is poured in short pours to keep
             the surface even. Nothing is rushed, because rushing shows.
           </p>
-          <p className="mt-6 text-base opacity-85 leading-relaxed">
+          <p className="mt-6 text-sm md:text-base opacity-85 leading-relaxed">
             We make in runs of ten or twelve. When a run is finished, the bench is
             cleared, and we begin the next. No two pieces are identical — but each
             one carries the same measure of care.
@@ -48,7 +48,7 @@ function About() {
       </section>
 
       <section className="mx-auto mt-32 max-w-[1000px] px-6 md:mt-48 md:px-12">
-        <p className="font-display text-2xl leading-[1.35] md:text-4xl md:leading-[1.2]">
+        <p className="font-display text-xl sm:text-2xl leading-[1.35] md:text-4xl md:leading-[1.2]">
           "A room becomes a home slowly — by hand, one small piece at a time. We
           make the additions."
         </p>

@@ -21,10 +21,10 @@ function Contact() {
     <PageShell>
       <section className="mx-auto max-w-[1000px] px-6 md:px-12">
         <p className="text-xs uppercase tracking-[0.28em] opacity-60">Contact</p>
-        <h1 className="mt-4 font-display text-4xl md:text-6xl max-w-2xl">
+        <h1 className="mt-4 font-display text-2xl sm:text-3xl md:text-6xl max-w-2xl leading-[1.05] md:leading-[1.02]">
           Press, trade, and correspondence.
         </h1>
-        <p className="mt-8 max-w-lg text-lg opacity-80">
+        <p className="mt-6 md:mt-8 max-w-lg text-sm sm:text-base md:text-lg opacity-80">
           For piece enquiries, please use the collection. For everything else,
           write to us here or at studio@aura.example.
         </p>

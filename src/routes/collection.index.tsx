@@ -23,7 +23,7 @@ function CollectionIndex() {
     <PageShell>
       <section className="mx-auto max-w-[1400px] px-6 md:px-12">
         <p className="text-xs uppercase tracking-[0.28em] opacity-60">Collection</p>
-        <h1 className="mt-4 font-display text-4xl md:text-6xl max-w-3xl">
+        <h1 className="mt-4 font-display text-2xl sm:text-3xl md:text-6xl max-w-3xl leading-[1.05] md:leading-[1.02]">
           Objects, grouped by their making.
         </h1>
         <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 text-sm uppercase tracking-[0.22em]">
@@ -42,7 +42,7 @@ function CollectionIndex() {
           className="mx-auto mt-32 max-w-[1400px] scroll-mt-32 px-6 md:mt-48 md:px-12"
         >
           <div className="flex items-end justify-between border-b border-[color-mix(in_oklab,var(--color-espresso)_15%,transparent)] pb-8">
-            <h2 className="font-display text-3xl md:text-5xl capitalize">{cat}</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-5xl capitalize">{cat}</h2>
             <Link
               to="/collection/$category"
               params={{ category: cat }}
@@ -51,7 +51,7 @@ function CollectionIndex() {
               View {cat}
             </Link>
           </div>
-          <p className="mt-8 max-w-xl text-base opacity-75">{categoryIntro[cat]}</p>
+          <p className="mt-6 md:mt-8 max-w-xl text-sm md:text-base opacity-75">{categoryIntro[cat]}</p>
 
           <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-2 lg:grid-cols-3">
             {byCategory(cat).map((p, i) => (

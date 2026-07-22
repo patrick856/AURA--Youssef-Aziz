@@ -34,8 +34,8 @@ function CategoryPage() {
         <Link to="/collection" className="text-xs uppercase tracking-[0.28em] opacity-60 link-quiet border-b-0">
           ← Collection
         </Link>
-        <h1 className="mt-6 font-display text-4xl md:text-6xl capitalize">{category}</h1>
-        <p className="mt-8 max-w-xl text-lg opacity-80">{categoryIntro[category]}</p>
+        <h1 className="mt-6 font-display text-2xl sm:text-3xl md:text-6xl capitalize leading-[1.05] md:leading-[1.02]">{category}</h1>
+        <p className="mt-6 md:mt-8 max-w-xl text-sm sm:text-base md:text-lg opacity-80">{categoryIntro[category]}</p>
       </section>
 
 

@@ -61,8 +61,8 @@ function PiecePage() {
 
           <div className="col-span-12 md:col-span-5 md:pt-24">
             <p className="text-xs uppercase tracking-[0.28em] opacity-60">AURA</p>
-            <h1 className="mt-3 font-display text-4xl md:text-5xl">{product.name}</h1>
-            <p className="mt-6 text-lg leading-relaxed opacity-85">{product.description}</p>
+            <h1 className="mt-3 font-display text-2xl sm:text-3xl md:text-5xl">{product.name}</h1>
+            <p className="mt-6 text-base sm:text-lg leading-relaxed opacity-85">{product.description}</p>
 
             <p className="mt-10 text-lg">${product.price}</p>
 
@@ -100,8 +100,10 @@ function PiecePage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-40 max-w-[1400px] px-6 md:px-12">
-        <p className="text-xs uppercase tracking-[0.28em] opacity-60">Also in the room</p>
+      <section className="mx-auto mt-24 md:mt-40 max-w-[1400px] px-6 md:px-12">
+        <h2 className="font-display text-xl sm:text-2xl md:font-sans md:text-xs capitalize md:uppercase tracking-normal md:tracking-[0.28em] text-espresso opacity-90 md:opacity-60">
+          Also in the room
+        </h2>
         <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-20 md:grid-cols-3">
           {related.map((p) => (
             <ProductCard key={p.id} product={p} />

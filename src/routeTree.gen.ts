@@ -9,29 +9,19 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SelectionRouteImport } from './routes/selection'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as SelectionRouteImport } from './routes/selection'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CollectionIndexRouteImport } from './routes/collection.index'
-import { Route as RequestSlugRouteImport } from './routes/request.$slug'
-import { Route as PieceSlugRouteImport } from './routes/piece.$slug'
 import { Route as CollectionCategoryRouteImport } from './routes/collection.$category'
+import { Route as PieceSlugRouteImport } from './routes/piece.$slug'
+import { Route as RequestSlugRouteImport } from './routes/request.$slug'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SelectionRoute = SelectionRouteImport.update({
-  id: '/selection',
-  path: '/selection',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -39,9 +29,19 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SelectionRoute = SelectionRouteImport.update({
+  id: '/selection',
+  path: '/selection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollectionIndexRoute = CollectionIndexRouteImport.update({
@@ -49,9 +49,9 @@ const CollectionIndexRoute = CollectionIndexRouteImport.update({
   path: '/collection/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const RequestSlugRoute = RequestSlugRouteImport.update({
-  id: '/request/$slug',
-  path: '/request/$slug',
+const CollectionCategoryRoute = CollectionCategoryRouteImport.update({
+  id: '/collection/$category',
+  path: '/collection/$category',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PieceSlugRoute = PieceSlugRouteImport.update({
@@ -59,9 +59,9 @@ const PieceSlugRoute = PieceSlugRouteImport.update({
   path: '/piece/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CollectionCategoryRoute = CollectionCategoryRouteImport.update({
-  id: '/collection/$category',
-  path: '/collection/$category',
+const RequestSlugRoute = RequestSlugRouteImport.update({
+  id: '/request/$slug',
+  path: '/request/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -149,25 +149,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/selection': {
-      id: '/selection'
-      path: '/selection'
-      fullPath: '/selection'
-      preLoaderRoute: typeof SelectionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -177,11 +163,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/selection': {
+      id: '/selection'
+      path: '/selection'
+      fullPath: '/selection'
+      preLoaderRoute: typeof SelectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collection/': {
@@ -191,11 +191,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/request/$slug': {
-      id: '/request/$slug'
-      path: '/request/$slug'
-      fullPath: '/request/$slug'
-      preLoaderRoute: typeof RequestSlugRouteImport
+    '/collection/$category': {
+      id: '/collection/$category'
+      path: '/collection/$category'
+      fullPath: '/collection/$category'
+      preLoaderRoute: typeof CollectionCategoryRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/piece/$slug': {
@@ -205,11 +205,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PieceSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/collection/$category': {
-      id: '/collection/$category'
-      path: '/collection/$category'
-      fullPath: '/collection/$category'
-      preLoaderRoute: typeof CollectionCategoryRouteImport
+    '/request/$slug': {
+      id: '/request/$slug'
+      path: '/request/$slug'
+      fullPath: '/request/$slug'
+      preLoaderRoute: typeof RequestSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }

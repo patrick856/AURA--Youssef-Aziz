@@ -3,18 +3,21 @@ import { useState } from "react";
 import { PageShell } from "@/components/layout/SiteChrome";
 import { findProduct } from "@/data/products";
 
+import { buildSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/request/$slug")({
   loader: ({ params }) => {
     const product = findProduct(params.slug);
     if (!product) throw notFound();
     return { product };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: loaderData ? `Request ${loaderData.product.name} — AURA` : "Request — AURA" },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
+  head: ({ loaderData, params }) =>
+    buildSeoMeta({
+      title: loaderData ? `Request ${loaderData.product.name} — AURA` : "Request Piece — AURA",
+      description: loaderData ? `Submit an enquiry to acquire ${loaderData.product.name} handcrafted by AURA.` : "Request a handcrafted piece from AURA.",
+      path: `/request/${params.slug}`,
+      noIndex: true,
+    }),
   component: RequestPage,
 });
 

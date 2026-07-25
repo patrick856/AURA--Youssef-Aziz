@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/layout/SiteChrome";
+import { buildSeoMeta } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — AURA" },
-      { name: "description", content: "Press, trade and wholesale enquiries." },
-      { property: "og:title", content: "Contact — AURA" },
-    ],
-    links: [{ rel: "canonical", href: "/contact" }],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "Contact — Press, Trade & Custom Enquiries | AURA Studio",
+      description:
+        "Get in touch with AURA Studio for press, trade, wholesale, or custom handcrafted home decor enquiries.",
+      path: "/contact",
+    }),
   component: Contact,
 });
 

@@ -20,7 +20,7 @@ export function ProductCard({ product, tall = false }: { product: Product; tall?
         >
           <img
             src={product.images[0]}
-            alt={product.name}
+            alt={`${product.name} — Handcrafted ${product.category} by AURA`}
             loading="lazy"
             className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
           />

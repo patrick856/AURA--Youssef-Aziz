@@ -3,19 +3,19 @@ import { PageShell } from "@/components/layout/SiteChrome";
 import { ProductCard } from "@/components/ProductCard";
 import { byCategory, categoryIntro, categoryOrder, type Category } from "@/data/products";
 
+import { buildSeoMeta, getBreadcrumbSchema } from "@/lib/seo";
+
 export const Route = createFileRoute("/collection/$category")({
   loader: ({ params }) => {
     if (!(categoryOrder as string[]).includes(params.category)) throw notFound();
     return { category: params.category as Category };
   },
-  head: ({ params }) => ({
-    meta: [
-      { title: `${cap(params.category)} — AURA` },
-      { name: "description", content: `Handcrafted ${params.category}. Made in small runs.` },
-      { property: "og:title", content: `${cap(params.category)} — AURA` },
-    ],
-    links: [{ rel: "canonical", href: `/collection/${params.category}` }],
-  }),
+  head: ({ params }) =>
+    buildSeoMeta({
+      title: `Handcrafted ${cap(params.category)} — Small Run Decor Objects | AURA`,
+      description: categoryIntro[params.category as Category] || `Handcrafted ${params.category} made slowly by hand in limited batches by AURA Studio.`,
+      path: `/collection/${params.category}`,
+    }),
   component: CategoryPage,
 });
 
@@ -28,8 +28,19 @@ function CategoryPage() {
   const category = data.category as Category;
   const items = byCategory(category);
 
+  const breadcrumbSchema = JSON.stringify(
+    getBreadcrumbSchema([
+      { name: "Collection", path: "/collection" },
+      { name: cap(category), path: `/collection/${category}` },
+    ])
+  );
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+      />
       <section className="mx-auto max-w-[1400px] px-6 md:px-12">
         <Link to="/collection" className="text-xs uppercase tracking-[0.28em] opacity-60 link-quiet border-b-0">
           ← Collection

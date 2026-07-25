@@ -1,20 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/layout/SiteChrome";
+import { buildSeoMeta } from "@/lib/seo";
 import studio from "@/assets/studio.jpg";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "The Studio — AURA" },
-      {
-        name: "description",
-        content:
-          "AURA is a small studio making candles, vases and clocks by hand, in short runs.",
-      },
-      { property: "og:title", content: "The Studio — AURA" },
-    ],
-    links: [{ rel: "canonical", href: "/about" }],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "The Studio — Handcrafted Craftsmanship & Design | AURA",
+      description:
+        "Learn about AURA's design philosophy. A small studio making candles, stoneware vases, and solid walnut clocks by hand, in short limited runs.",
+      path: "/about",
+      image: studio,
+    }),
   component: About,
 });
 
@@ -30,7 +27,12 @@ function About() {
 
       <section className="mx-auto mt-20 grid max-w-[1400px] grid-cols-12 gap-y-16 px-6 md:mt-32 md:gap-x-16 md:px-12">
         <div className="col-span-12 md:col-span-6">
-          <img src={studio} alt="Inside the AURA studio" className="w-full h-auto" loading="lazy" />
+          <img
+            src={studio}
+            alt="Inside the AURA design studio showing handcrafted ceramics and woodworking craftsmanship"
+            className="w-full h-auto"
+            loading="lazy"
+          />
         </div>
         <div className="col-span-12 md:col-span-5 md:col-start-8 md:pt-8">
           <h2 className="font-display text-xl md:text-3xl">Quality of attention.</h2>

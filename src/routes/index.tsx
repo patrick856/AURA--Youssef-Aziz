@@ -2,24 +2,18 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/layout/SiteChrome";
 import { ProductCard } from "@/components/ProductCard";
 import { products } from "@/data/products";
+import { buildSeoMeta } from "@/lib/seo";
 import heroPiece from "@/assets/hero-piece.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "AURA — Made by hand, one small piece at a time" },
-      {
-        name: "description",
-        content:
-          "A room becomes a home, slowly, by hand. Handcrafted candles, vases and clocks from AURA.",
-      },
-      { property: "og:title", content: "AURA — Handcrafted home decor" },
-      {
-        property: "og:description",
-        content: "Made by hand, one small piece at a time.",
-      },
-    ],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "AURA — Handcrafted Home Decor | Made by Hand",
+      description:
+        "Handcrafted candles, vases and clocks. Made slowly by hand, one small piece at a time. Discover minimalist decor objects for your home.",
+      path: "/",
+      image: heroPiece,
+    }),
   component: Home,
 });
 

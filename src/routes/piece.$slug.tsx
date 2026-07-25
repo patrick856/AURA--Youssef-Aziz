@@ -3,6 +3,7 @@ import { PageShell } from "@/components/layout/SiteChrome";
 import { ProductCard } from "@/components/ProductCard";
 import { findProduct, products } from "@/data/products";
 import { useSelection } from "@/context/selection";
+import { buildSeoMeta, getProductSchema, getBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/piece/$slug")({
   loader: ({ params }) => {
@@ -12,21 +13,21 @@ export const Route = createFileRoute("/piece/$slug")({
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
-      return { meta: [{ title: "Not found — AURA" }, { name: "robots", content: "noindex" }] };
+      return buildSeoMeta({
+        title: "Piece Not Found — AURA",
+        description: "The requested piece could not be found.",
+        path: "/piece",
+        noIndex: true,
+      });
     }
     const { product } = loaderData;
-    return {
-      meta: [
-        { title: `${product.name} — AURA` },
-        { name: "description", content: product.description },
-        { property: "og:title", content: `${product.name} — AURA` },
-        { property: "og:description", content: product.description },
-        { property: "og:image", content: product.images[0] },
-        { property: "og:url", content: `/piece/${product.slug}` },
-        { property: "og:type", content: "product" },
-      ],
-      links: [{ rel: "canonical", href: `/piece/${product.slug}` }],
-    };
+    return buildSeoMeta({
+      title: `${product.name} — Handcrafted ${product.category} | AURA`,
+      description: `${product.description} Made from ${product.materials.join(", ")}. ${product.dimensions}.`,
+      path: `/piece/${product.slug}`,
+      image: product.images[0],
+      type: "product",
+    });
   },
   component: PiecePage,
 });
@@ -38,8 +39,41 @@ function PiecePage() {
 
   const related = products.filter((p) => p.id !== product.id).slice(0, 3);
 
+  const productSchema = JSON.stringify(
+    getProductSchema({
+      id: product.id,
+      name: product.name,
+      slug: product.slug,
+      description: product.description,
+      category: product.category,
+      price: product.price,
+      image: product.images[0],
+      materials: product.materials,
+      dimensions: product.dimensions,
+    })
+  );
+
+  const breadcrumbSchema = JSON.stringify(
+    getBreadcrumbSchema([
+      { name: "Collection", path: "/collection" },
+      {
+        name: product.category.charAt(0).toUpperCase() + product.category.slice(1),
+        path: `/collection/${product.category}`,
+      },
+      { name: product.name, path: `/piece/${product.slug}` },
+    ])
+  );
+
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: productSchema }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
+      />
       <section className="mx-auto max-w-[1400px] px-6 md:px-12">
         <Link
           to="/collection/$category"
@@ -49,7 +83,7 @@ function PiecePage() {
           ← {product.category}
         </Link>
 
-        <div className="mt-10 grid grid-cols-12 gap-y-16 md:gap-x-16">
+        <div className="mt-4 md:mt-10 grid grid-cols-12 gap-y-6 md:gap-y-16 md:gap-x-16">
           <div className="col-span-12 md:col-span-7">
             <img
               src={product.images[0]}

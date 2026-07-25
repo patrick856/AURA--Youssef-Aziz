@@ -3,14 +3,18 @@ import { useState } from "react";
 import { PageShell } from "@/components/layout/SiteChrome";
 import { useSelection } from "@/context/selection";
 
+import { findProduct } from "@/data/products";
+
+import { buildSeoMeta } from "@/lib/seo";
+
 export const Route = createFileRoute("/selection")({
-  head: () => ({
-    meta: [
-      { title: "Selection — AURA" },
-      { name: "description", content: "A shortlist of pieces to enquire about." },
-      { name: "robots", content: "noindex" },
-    ],
-  }),
+  head: () =>
+    buildSeoMeta({
+      title: "Your Selection — AURA",
+      description: "A shortlist of handcrafted decor pieces to enquire about.",
+      path: "/selection",
+      noIndex: true,
+    }),
   component: SelectionPage,
 });
 
@@ -62,23 +66,34 @@ function SelectionPage() {
         ) : (
           <>
             <ul className="divide-y divide-[color-mix(in_oklab,var(--color-espresso)_15%,transparent)] border-t border-b border-[color-mix(in_oklab,var(--color-espresso)_15%,transparent)]">
-              {items.map((i) => (
-                <li key={i.id} className="flex items-center gap-6 py-6">
-                  <img src={i.image} alt={i.name} className="h-24 w-20 object-cover" />
-                  <div className="flex-1">
-                    <Link to="/piece/$slug" params={{ slug: i.slug }} className="font-display text-xl link-quiet border-b-0">
-                      {i.name}
-                    </Link>
-                    <p className="mt-1 text-sm opacity-70">{i.materials.join(", ")}</p>
-                  </div>
-                  <button
-                    onClick={() => remove(i.id)}
-                    className="text-xs uppercase tracking-[0.22em] opacity-60 hover:opacity-100 transition-opacity"
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
+              {items.map((i) => {
+                const prod = findProduct(i.slug);
+                return (
+                  <li key={i.id} className="flex items-stretch gap-4 sm:gap-6 py-5 md:py-6">
+                    <img src={i.image} alt={i.name} className="h-24 w-20 object-cover shrink-0" />
+                    <div className="flex-1 min-w-0 flex flex-col justify-between">
+                      <div>
+                        <Link to="/piece/$slug" params={{ slug: i.slug }} className="font-display text-lg md:text-xl link-quiet border-b-0 leading-snug">
+                          {i.name}
+                        </Link>
+                        <p className="mt-0.5 text-sm opacity-70 leading-snug">{i.materials.join(", ")}</p>
+                      </div>
+                    </div>
+                    <div className="flex flex-col justify-between items-end shrink-0">
+                      {prod && (
+                        <p className="text-sm md:text-base opacity-80 pt-1">${prod.price}</p>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => remove(i.id)}
+                        className="text-xs uppercase tracking-[0.22em] opacity-60 hover:opacity-100 transition-opacity"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
 
             <form onSubmit={onSubmit} className="mt-20 grid grid-cols-1 gap-10 md:grid-cols-2">

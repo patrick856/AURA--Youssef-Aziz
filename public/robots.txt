@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /selection
+Disallow: /request/
+
+Sitemap: https://aura-home.com/sitemap.xml

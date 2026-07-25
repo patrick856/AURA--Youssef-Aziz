@@ -75,7 +75,9 @@
 
 @utility link-quiet {
   position: relative;
-  display: inline-block;
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
   padding-bottom: 2px;
   border-bottom: 1px solid color-mix(in oklab, currentColor 35%, transparent);
   transition: border-color 300ms ease, color 300ms ease;

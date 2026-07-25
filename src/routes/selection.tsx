@@ -46,12 +46,14 @@ function SelectionPage() {
             <p className="font-display text-2xl md:text-3xl opacity-75">
               Nothing chosen yet.
             </p>
-            <Link
-              to="/collection"
-              className="mt-8 inline-block text-sm uppercase tracking-[0.22em] link-quiet"
-            >
-              Walk through the collection
-            </Link>
+            <div className="mt-8">
+              <Link
+                to="/collection"
+                className="inline text-xs sm:text-sm uppercase tracking-[0.20em] sm:tracking-[0.22em] link-quiet"
+              >
+                Walk through the collection
+              </Link>
+            </div>
           </div>
         ) : submitted ? (
           <div className="border-t border-[color-mix(in_oklab,var(--color-espresso)_15%,transparent)] pt-16">
@@ -59,9 +61,11 @@ function SelectionPage() {
             <p className="mt-6 font-display text-3xl md:text-4xl max-w-xl">
               Thank you. We'll be in touch to discuss these pieces.
             </p>
-            <Link to="/collection" className="mt-12 inline-block text-sm uppercase tracking-[0.22em] link-quiet">
-              Return to the collection
-            </Link>
+            <div className="mt-12">
+              <Link to="/collection" className="inline text-xs sm:text-sm uppercase tracking-[0.20em] sm:tracking-[0.22em] link-quiet">
+                Return to the collection
+              </Link>
+            </div>
           </div>
         ) : (
           <>
